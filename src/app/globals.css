@@ -1,0 +1,198 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Shadcn/UI Base Colors */
+  --color-background: #F7F9FB;
+  --color-foreground: #333A45;
+
+  --color-card: #F7F9FB;
+  --color-card-foreground: #333A45;
+
+  --color-popover: #F7F9FB;
+  --color-popover-foreground: #333A45;
+
+  --color-primary: #0B2447;
+  --color-primary-foreground: #F7F9FB;
+
+  --color-secondary: #E6EDF3;
+  --color-secondary-foreground: #333A45;
+
+  --color-muted: #E6EDF3;
+  --color-muted-foreground: #333A45;
+
+  --color-accent: #00AFAE;
+  --color-accent-foreground: #F7F9FB;
+
+  --color-destructive: #FF6B61;
+  --color-destructive-foreground: #F7F9FB;
+
+  --color-border: #E6EDF3;
+  --color-input: #E6EDF3;
+  --color-ring: #0B2447;
+
+  /* Chart Colors (placeholders, adjust if specific chart colors are in design system) */
+  --color-chart-1: #00AFAE;
+  --color-chart-2: #0B2447;
+  --color-chart-3: #FF6B61;
+  --color-chart-4: #1e3a5f;
+  --color-chart-5: #33c1c0;
+
+  /* Sidebar Colors (assuming default shadcn values, adjust if design system specifies) */
+  --color-sidebar: #F7F9FB;
+  --color-sidebar-foreground: #333A45;
+  --color-sidebar-primary: #0B2447;
+  --color-sidebar-primary-foreground: #F7F9FB;
+  --color-sidebar-accent: #E6EDF3;
+  --color-sidebar-accent-foreground: #333A45;
+  --color-sidebar-border: #E6EDF3;
+  --color-sidebar-ring: #0B2447;
+
+  /* Radius (Shadcn/UI defaults, adjusted for '2xl' preference if needed, but not specified in design system sizing) */
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  /* Custom Design System Colors */
+  --color-primary-900: #0B2447;
+  --color-primary-600: #1e3a5f;
+  --color-accent-500: #00AFAE;
+  --color-accent-400: #33c1c0;
+  --color-coral-500: #FF6B61;
+  --color-coral-400: #ff8a82;
+  --color-neutral-50: #F7F9FB;
+  --color-neutral-100: #E6EDF3;
+  --color-neutral-700: #333A45;
+
+  /* Font Families */
+  --font-display: "Satoshi", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+  --font-mono: "Satoshi", sans-serif;
+
+  /* Shadcn/UI Animation Defaults */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-neutral-50);
+    --foreground: var(--color-neutral-700);
+
+    --card: var(--color-neutral-50);
+    --card-foreground: var(--color-neutral-700);
+
+    --popover: var(--color-neutral-50);
+    --popover-foreground: var(--color-neutral-700);
+
+    --primary: var(--color-primary-900);
+    --primary-foreground: var(--color-neutral-50);
+
+    --secondary: var(--color-neutral-100);
+    --secondary-foreground: var(--color-neutral-700);
+
+    --muted: var(--color-neutral-100);
+    --muted-foreground: var(--color-neutral-700);
+
+    --accent: var(--color-accent-500);
+    --accent-foreground: var(--color-neutral-50);
+
+    --destructive: var(--color-coral-500);
+    --destructive-foreground: var(--color-neutral-50);
+
+    --border: var(--color-neutral-100);
+    --input: var(--color-neutral-100);
+    --ring: var(--color-primary-900);
+
+    --chart-1: var(--color-accent-500);
+    --chart-2: var(--color-primary-900);
+    --chart-3: var(--color-coral-500);
+    --chart-4: var(--color-primary-600);
+    --chart-5: var(--color-accent-400);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: var(--color-neutral-50);
+    --sidebar-foreground: var(--color-neutral-700);
+    --sidebar-primary: var(--color-primary-900);
+    --sidebar-primary-foreground: var(--color-neutral-50);
+    --sidebar-accent: var(--color-neutral-100);
+    --sidebar-accent-foreground: var(--color-neutral-700);
+    --sidebar-border: var(--color-neutral-100);
+    --sidebar-ring: var(--color-primary-900);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--primary);
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: var(--foreground);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+  }
+}
